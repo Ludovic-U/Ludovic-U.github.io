@@ -1,0 +1,19 @@
+.disnone {
+    display: none;
+}
+
+.alert {
+    color: red;
+}
+
+div {
+    border: solid 2px black;
+    padding: 5px;
+    margin: 5px;
+}
+
+line {
+    stroke-width: 0.75;
+    stroke: rgb(255, 0, 0);
+    
+}
