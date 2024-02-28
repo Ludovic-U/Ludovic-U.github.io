@@ -9,10 +9,17 @@ export function createCircle(skills){
 
 
     let i = 0
+    let path = "M "
     skills.forEach((valeur, skill) => {
         addSegment(centreX, centreY, pointsDeDivision[i], skill)
+
+        if (i != 0){
+            path += "L "
+        }
+        path += drawPath(centreX, centreY, pointsDeDivision[i], valeur)
         i++
     });
+    addSvg("path", undefined, undefined, undefined, path+"Z")
 
 }
 
@@ -35,15 +42,20 @@ function addSegment(centreX, centreY, pointExterieur, skill){
 
     addSvg("line", centreX, centreY, pointExterieur)
     addSvg("text", undefined, undefined, pointExterieur, skill)
-                // let directionX = stat.p_x + stat.player.offsetWidth/2 - enemy.x;
-                // let directionY = stat.p_y + stat.player.offsetHeight/2 - enemy.y;
-                // let length = Math.sqrt(directionX * directionX + directionY * directionY);
-                // if (length != 0) {
-                //     directionX /= length;
-                //     directionY /= length;
-                // }
-                // enemy.x += directionX * enemy.speed;
-                // enemy.y += directionY * enemy.speed;
+    let directionX = pointExterieur.x - centreX;
+    let directionY = pointExterieur.y - centreY;
+    let length = Math.sqrt(directionX * directionX + directionY * directionY);
+        if (length != 0) {
+            directionX /= length;
+            directionY /= length;
+        }
+    for ( let i = 1; i <= 9; i++){        
+        let posX = centreX + directionX * (i*20);
+        let posY = centreY + directionY * (i*20);
+
+    addSvg("circle", posX, posY)        
+    }
+                
 }
 
 function addSvg(type, x1, y1, pointExt, other){
@@ -53,7 +65,7 @@ function addSvg(type, x1, y1, pointExt, other){
         case "text":
             newSvg.setAttribute("x", pointExt.x);
             newSvg.setAttribute("y", pointExt.y);
-            newSvg.textContent = other.strip(5)
+            newSvg.textContent = other.substring(6, other.length)
             break
         case "line":
             newSvg.setAttribute("x1", x1);
@@ -62,18 +74,31 @@ function addSvg(type, x1, y1, pointExt, other){
             newSvg.setAttribute("y2", pointExt.y);
             break
         case "circle":
+            newSvg.setAttribute("cx", x1);
+            newSvg.setAttribute("cy", y1);
+            newSvg.setAttribute("r", 2);
             break
-        default : console.log("exception")
+        case "path":
+            newSvg.setAttribute("d", other);
+            break
+        default : console.log("svg exception")
     }
 
-    newSvg.setAttribute("x1", x1);
-    newSvg.setAttribute("x2", pointExt.x);
-    newSvg.setAttribute("y1", y1);
-    newSvg.setAttribute("y2", pointExt.y);
-    // newSvg.setAttribute("stroke-width", 0.75);
-    // newSvg.setAttribute("stroke", "rgb(170, 170, 170)");
 
     document.getElementById("svgWindow").appendChild(newSvg)
 }
 
+function drawPath(centreX, centreY, pointExt, value) {
+    let directionX = pointExt.x - centreX;
+    let directionY = pointExt.y - centreY;
+    let length = Math.sqrt(directionX * directionX + directionY * directionY);
+        if (length != 0) {
+            directionX /= length;
+            directionY /= length;
+        }      
+        let posX = centreX + directionX * (value*2);
+        let posY = centreY + directionY * (value*2);
+    
+    return `${posX} ${posY} `
+}
 

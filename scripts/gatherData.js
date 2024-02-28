@@ -75,8 +75,9 @@ export function GatherData(token){
 
             }
         });
-
+        
          data.data.user.forEach(u => {
+            let workingCount = 0
             u.groups.forEach(grp => {
                 if (grp.group.eventId == 148){
                     if (grp.group.status == "finished") {
@@ -87,9 +88,13 @@ export function GatherData(token){
                         newDiv.href = `https://zone01normandie.org/intra/rouen/div-01/${text[text.length -1]}`
                         newDiv.textContent = text[text.length -1]
                         document.getElementById("working").appendChild(newDiv);
+                        workingCount++
                     }
                 }
             })
+            if (workingCount == 0){
+                document.getElementById("working").textContent = "No new project started yet."
+            }
          })
 
 
