@@ -88,7 +88,7 @@ export function GatherData(token){
                 if (grp.group.eventId == 148){
                     if (grp.group.status == "finished") {
                         finished++
-                    } else {
+                    } else if (grp.group.status == "working"){
                         let text = grp.group.path.split("/")
                         let newDiv = document.createElement("a")
                         newDiv.href = `https://zone01normandie.org/intra/rouen/div-01/${text[text.length -1]}`
