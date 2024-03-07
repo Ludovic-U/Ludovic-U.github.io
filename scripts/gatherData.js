@@ -1,4 +1,5 @@
 import { createCircle } from "./circleGraph.js";
+import { progressGraph } from "./progressGraph.js"
 
 export function GatherData(token){
     console.log("gathering")
@@ -38,7 +39,7 @@ export function GatherData(token){
         `
     }),
     })
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
         let div01xp = 0;
         let lvl = 0;
@@ -46,11 +47,16 @@ export function GatherData(token){
         let auditUp = 0;
         let skills = new Map();
         let finished = 0;
+        let progress = [];
 
 
         data.data.transaction.forEach(element => {
             switch (element.type){
                 case "xp" : div01xp+= element.amount
+                let dateformated = element.createdAt.substring(0, 10)
+                let tmp = dateformated.split("-")
+                dateformated = tmp.join("")
+                    progress.push({date: dateformated, amount: element.amount})
                     break;
 
                 case "level" : 
@@ -102,14 +108,27 @@ export function GatherData(token){
          document.getElementById("name").textContent += data.data.user[0].attrs.firstName +" "+ data.data.user[0].attrs.lastName;
          document.getElementById("div01xp").textContent += (div01xp / 1000).toFixed(0) + "k" ;
          document.getElementById("lvl").textContent += lvl ;
-         document.getElementById("auditDown").textContent += auditDown.toFixed(0) ;
-         document.getElementById("auditUp").textContent += auditUp.toFixed(0) ;
+
          document.getElementById("ratio").textContent += (auditUp / auditDown).toFixed(1) ;
+         if (auditDown > auditUp) {
+            document.getElementById("lineUp").setAttribute("x2", 100*(auditUp/auditDown));
+         } else {
+            document.getElementById("lineDown").setAttribute("x2", 100*(auditDown/auditUp));
+         }
+         if (auditDown>1000000){
+            document.getElementById("auditDown").textContent += (auditDown/1000000).toFixed(2) + "Mb" ;
+            document.getElementById("auditUp").textContent += (auditUp/1000000).toFixed(2) + "Mb" ; 
+         } else if (auditDown>1000){
+            document.getElementById("auditDown").textContent += (auditDown/1000).toFixed(2) + "Kb" ;
+            document.getElementById("auditUp").textContent += (auditUp/1000).toFixed(2) + "Kb" ; 
+         }       
+         
          document.getElementById("finished").textContent += finished ;
 
          createCircle(skills)
-         
 
+         progress.sort((a, b) => a.date - b.date)
+         progressGraph(progress, div01xp)
 
     }
     )

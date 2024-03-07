@@ -25,8 +25,9 @@
 
         <section class="three_sections">
             <div id="ratio">Ratio : </div>
-            <svg id="ratioSvg" style="overflow: visible;" width="100px" height="100px" viewBox="0 0 100 100" class="mv6-01 pb7-01">
-                <circle cx="200" cy="200" r="200"></circle>
+            <svg id="ratioSvg" style="overflow: visible;" width="100px" height="40px" viewBox="0 0 100 40" class="mv6-01 pb7-01">
+                <line id="lineDown" x1="0" y1="30" y2="30" x2="100"></line>
+                <line id="lineUp" x1="0" y1="10" y2="10" x2="100"></line>                
             </svg>
             <div id="auditDown"></div>
             <div id="auditUp"></div>
@@ -37,9 +38,13 @@
             <div id="working" class="col">Currently working on : </div> 
         </section>
 
-        <section class="graph">
-            <svg id="svgWindow" style="overflow: visible;" width="100%" height="100%" viewBox="0 0 400 400" class="mv6-01 pb7-01">
+        <section class="graph col">
+            <svg id="svgCircleGraph" style="overflow: visible;" width="100%" height="100%" viewBox="0 0 400 400" class="mv6-01 pb7-01">
                 <circle cx="200" cy="200" r="200"></circle>
+            </svg>
+
+            <svg id="svgProgressGraph" style="overflow: visible;" width="100%" height="100%" viewBox="0 0 600 400" class="mv6-01 pb7-01">
+
             </svg>
         </section>
 

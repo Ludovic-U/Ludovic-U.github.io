@@ -5,7 +5,7 @@ export function createCircle(skills){
     const centreX = 200; 
     const centreY = 200; 
     const pointsDeDivision = diviserCercle(nombreDeParties, rayonDuCercle, centreX, centreY);
-    console.log(pointsDeDivision);
+
 
 
     let i = 0
@@ -19,7 +19,7 @@ export function createCircle(skills){
         path += drawPath(centreX, centreY, pointsDeDivision[i], valeur)
         i++
     });
-    addSvg("path", undefined, undefined, undefined, path+"Z")
+    addSvg("svgCircleGraph", "path", undefined, undefined, undefined, undefined, path+"Z")
 
 }
 
@@ -40,8 +40,8 @@ function diviserCercle(N, rayon, centreX, centreY) {
 
 function addSegment(centreX, centreY, pointExterieur, skill){
 
-    addSvg("line", centreX, centreY, pointExterieur)
-    addSvg("text", undefined, undefined, pointExterieur, skill)
+    addSvg("svgCircleGraph", "line", centreX, centreY, pointExterieur.x, pointExterieur.y)
+    addSvg("svgCircleGraph", "text", undefined, undefined, pointExterieur.x, pointExterieur.y, skill.substring(6, skill.length))
     let directionX = pointExterieur.x - centreX;
     let directionY = pointExterieur.y - centreY;
     let length = Math.sqrt(directionX * directionX + directionY * directionY);
@@ -53,25 +53,28 @@ function addSegment(centreX, centreY, pointExterieur, skill){
         let posX = centreX + directionX * (i*20);
         let posY = centreY + directionY * (i*20);
 
-    addSvg("circle", posX, posY)        
+    addSvg("svgCircleGraph", "circle", posX, posY)        
     }
                 
 }
 
-function addSvg(type, x1, y1, pointExt, other){
+export function addSvg(destination, type, x1, y1, x2, y2, other){
     let newSvg = document.createElementNS("http://www.w3.org/2000/svg", type)
     
     switch(type){
         case "text":
-            newSvg.setAttribute("x", pointExt.x);
-            newSvg.setAttribute("y", pointExt.y);
-            newSvg.textContent = other.substring(6, other.length)
+            newSvg.setAttribute("x", x2);
+            newSvg.setAttribute("y", y2);
+            newSvg.textContent = other
             break
         case "line":
             newSvg.setAttribute("x1", x1);
-            newSvg.setAttribute("x2", pointExt.x);
+            newSvg.setAttribute("x2", x2);
             newSvg.setAttribute("y1", y1);
-            newSvg.setAttribute("y2", pointExt.y);
+            newSvg.setAttribute("y2", y2);
+            if (other != undefined){
+                newSvg.setAttribute("class", other);
+            }
             break
         case "circle":
             newSvg.setAttribute("cx", x1);
@@ -85,7 +88,7 @@ function addSvg(type, x1, y1, pointExt, other){
     }
 
 
-    document.getElementById("svgWindow").appendChild(newSvg)
+    document.getElementById(destination).appendChild(newSvg)
 }
 
 function drawPath(centreX, centreY, pointExt, value) {
