@@ -7,33 +7,174 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section class="row">
+
+    <div class="welcome">Bienvenue sur mon Portfolio</div>
+    <canvas id="ambers"></canvas>
+
+
+    <section id="first_sec" class="row">
         <!-- photo -->
         <div class="first_sec_div">
             <img src="img/profile_picture.png" class="profile_pic" alt="profile picture">
         </div>
 
         <!-- presentation -->
-        <div class="first_sec_div summary">
-            <p>Presentation</p>
+        <div class="first_sec_div col summary">
+            <p class="about">À propos de moi:</p>
+            <p>Passionné par la programmation, je combine patience et rigueur pour relever des défis créatifs. Fort de deux ans de formation intensive à Zone01, je m'investis dans des projets qui allient performance et impact. Je suis toujours à la recherche de nouvelles opportunités pour apprendre et partager mes connaissances.</p>
         </div>
 
         <!-- CV -->
-        <div class="col first_sec_div">
-            <img src="" alt="cv card">
-            <button>download</button>
+        <div class="first_sec_div col dwnl_cv">
+            <img id="cv_card" src="img/small_cv.png" alt="cv card">
+            <button id="download-btn" class="dwnl-btn futuristic-button">Téléchargez mon CV</button>
         </div>
     </section>
 
     <!-- section change -->
-    <button class="section_transition col">
+    <button class="section_transition col futuristic-button" data-target="#section2">
         <div>voir mes projets</div>
-        <div>v</div>
     </button>
 
-    <section>
-        Projects
+    <section id="section2">
+        <div class="card">
+            <div class="inner-card row">
+                <video src="video/social-network.webm" loop autoplay muted playsinline >
+                    Votre navigateur ne supporte pas la balise vidéo.
+                </video>
+                <div class="col project_description">
+                    <h1><a href="https://github.com/Ludovic-U/" target="_blank">Social-Network</a></h1>
+                    <p>Réseau social complet avec sa gestion des publications, des rôles d'utilisateurs, et du tchat en temps réel </p>
+                    <div class="competence">
+                        <span> Angular </span>
+                        <span> SQL </span>
+                    </div>
+                </div>              
+            </div>
+
+            <div class="blob"></div>
+            <div class="fakeblob"></div>
+        </div>
+        
+        
+        <div class="card">
+            <div class="inner-card row">
+                <video src="video/videogame.webm" loop autoplay muted playsinline >
+                    Votre navigateur ne supporte pas la balise vidéo.
+                </video>
+                <div class="col project_description">
+                    <h1><a href="https://github.com/Ludovic-U/Spacelift_Certified" target="_blank">Video Game 3D</a></h1>
+                    <p>Ce projet sur le long terme a demandé la mise en place d'une architecture robuste et une attention particulière à l'expérience utilisateur</p>
+                    <div class="competence">
+                        <span> Python </span>
+                        <span> Architecture </span>
+                        <span> Composition </span>
+                        <span> UX/UI </span>
+                    </div>
+                </div>              
+            </div>
+
+            <div class="blob"></div>
+            <div class="fakeblob"></div>
+        </div>
+
+        <div class="card">
+            <div class="inner-card row">
+                <video src="video/smart-road.webm" loop autoplay muted playsinline >
+                    Votre navigateur ne supporte pas la balise vidéo.
+                </video>
+                <div class="col project_description">
+                    <h1><a href="https://github.com/Ludovic-U/" target="_blank">Smart-Road</a></h1>
+                    <p>Faire en sorte qu'aucun des véhicule ne se heurtent, sans provoquer d'interblocage! C'était le défi de ce projet en Rust</p>
+                    <div class="competence">
+                        <span> Rust </span>
+                        <span> Algorithmie </span>
+                    </div>
+                </div>              
+            </div>
+
+            <div class="blob"></div>
+            <div class="fakeblob"></div>
+        </div>
+        
+        
+        <div class="card">
+            <div class="inner-card row">
+                <video src="video/bomberman.webm" loop autoplay muted playsinline >
+                    Votre navigateur ne supporte pas la balise vidéo.
+                </video>
+                <div class="col project_description">
+                    <h1><a href="https://github.com/Ludovic-U/" target="_blank">Real-Time Server</a></h1>
+                    <p>Serveur permettant l'interaction en temps réel de plusieurs joueurs dans ce jeu inspiré de Bomberman</p>
+                    <div class="competence">
+                        <span> Golang </span>
+                        <span> Websocket </span>
+                        <span> Javascript </span>
+                    </div>
+                </div>              
+            </div>
+
+            <div class="blob"></div>
+            <div class="fakeblob"></div>
+        </div>
+
+        <div class="card">
+            <div class="inner-card row">
+                <video src="video/lemin.webm" loop autoplay muted playsinline >
+                    Votre navigateur ne supporte pas la balise vidéo.
+                </video>
+                <div class="col project_description">
+                    <h1><a href="https://github.com/Ludovic-U/" target="_blank">Lem-in</a></h1>
+                    <p>Algorithme permettant de répartir un flux (ici de fourmis) parmi plusieurs chemins de manière à ce qu'il s'écoule le plus rapidement possible</p>
+                    <div class="competence">
+                        <span> Golang </span>
+                        <span> Algorithmie </span>
+                        <span> Javascript </span>
+                    </div>
+                </div>              
+            </div>
+
+            <div class="blob"></div>
+            <div class="fakeblob"></div>
+        </div>
+        
+        
+        <div class="card">
+            <div class="inner-card row">
+                <img src="img/github.png" alt="github_logo">
+                <div class="col project_description">
+                    <h1><a href="https://github.com/Ludovic-U/" target="_blank">Et plus de 30 autres projets !</a></h1>
+                    <p>Retrouvez tout les projets sur lesquels j'ai travaillé durant ces deux dernières années sur mon GitHub.</p>
+                </div>              
+            </div>
+
+            <div class="blob"></div>
+            <div class="fakeblob"></div>
+        </div>
     </section>
 
 </body>
+<script>
+    document.getElementById('download-btn').addEventListener('click', function () {
+    const link = document.createElement('a');
+    link.href = "img/CV_Ludovic_UNTEREINER_2025.pdf"
+    link.download = 'CV_Ludovic_UNTEREINER_2025.pdf';      
+    link.click();    
+});
+
+document.querySelectorAll('.section_transition').forEach(button => {
+    button.addEventListener('click', function () {
+        const target = document.querySelector(this.getAttribute('data-target'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    });    
+});
+</script>
+<script type="module" src="/scripts/ambers.js"></script>
+<script type="module" src="/scripts/tilting_card.js"></script>
+<script type="module" src="/scripts/project_highligth.js"></script>
+
 </html>

@@ -1,14 +1,25 @@
 @font-face {
     font-family: 'Sofia';
     src: url('font/Sofia_Sans_Condensed/static/SofiaSansCondensed-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
+@font-face {
+    font-family: 'Sofia';
+    src: url('font/Sofia_Sans_Condensed/static/SofiaSansCondensed-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
 
 body{
     margin: 0;
     padding: 0;
     font-family: 'Sofia', sans-serif;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(12,10,47,1) 32%, rgba(12,10,47,1) 62%, rgba(0,0,0,1) 100%);
 }
+
 
 button {
     font-family: 'Sofia', sans-serif;
@@ -27,10 +38,29 @@ button {
 
 /* presentation */
 
-section:nth-of-type(1){
+.welcome{
+    position: absolute;
+    width: 100%;
+    top: 7vh;
+
+    font-size: 6vw;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-shadow: rgb(196, 196, 196) 1px 0 10px;
+}
+
+#ambers {
+    position: absolute;
+    z-index: -1;
     background: rgb(236,252,255);
     background: linear-gradient(90deg, rgba(236,252,255,1) 34%, rgba(126,163,215,1) 76%); 
 
+    height: 90vh;
+    width: 100%;
+}
+
+#first_sec{
     height: 90vh;
     padding: 0 10vw 0 10vw;
 }
@@ -46,21 +76,169 @@ section:nth-of-type(1){
     align-self: flex-end;
 }
 
+.about{
+    font-size: 2.5vh;
+    font-weight: bold;
+    margin: 0;
+}
+
 .summary{
     align-self: center;
+    padding: 10% 20% 0 0;
+    font-size: 2.5vh;
+}
+
+.dwnl_cv{
+    align-self: center;
+    margin-top: 10vw;
+}
+
+.dwnl_cv > img{
+    object-fit: cover;
+    width: 10vw;
+    align-self: center;
+    box-shadow: 0px 0px 50px rgb(0, 0, 0, 0.5);
+}
+
+.dwnl-btn{
+    position: relative;
+    margin-top: 5vh;
+}
+
+.futuristic-button {
+    background: linear-gradient(145deg, #00bcd4, #0288d1);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.6), inset 0 0 5px #0288d1;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.futuristic-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    transition: all 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.futuristic-button:hover::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.futuristic-button:hover {
+    background: linear-gradient(145deg, #03a9f4, #0288d1);
+    box-shadow: 0 6px 20px rgba(0, 188, 212, 0.8), inset 0 0 8px #03a9f4;
+    transform: scale(1.05) ;
 }
 
 /* projects */
-
-section:nth-of-type(2){
-    background-color: rgb(0, 0, 40);
-
-    height: 95vh;
-}
-
 .section_transition{
     position: absolute;
     top: 90vh;
     left: 50vw;
     transform: translate(-50%, -50%);
 }
+.section_transition:hover{
+    position: absolute;
+    top: 90vh;
+    left: 50vw;
+    transform: scale(1.05) translate(-50%, -50%);
+}
+
+#section2{
+    overflow: hidden;
+    height: 95vh;
+    padding: 0 10vw 0 10vw;
+    color: white;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 2vw;
+    flex-wrap: wrap; 
+}
+
+
+.blob {
+    filter: blur(40px);
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    opacity: 0;
+    left: 0;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgb(255, 255, 255, 0.9);
+    transition: all 300ms ease-in-out;
+  }
+  
+  .fakeblob {
+    display: hidden;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  
+  .card {
+    overflow: hidden;
+    padding: 3px;
+    margin: 0;
+    background: rgb(128 128 128 / 0.2);
+    border-radius: 10px;
+    position: relative;
+    transition: all 300ms ease-in-out;
+  }
+  
+  .inner-card {
+    border-radius: 7px;
+    padding: 10px;
+    width: 30vw;
+    height: 10vw;
+    background: rgb(26,26,26);
+    backdrop-filter: blur(80px);
+    transition: all 300ms ease-in-out;
+  }
+  
+  .card:hover > .inner-card {
+    background: rgb(26,26,26, 0.6);
+    backdrop-filter: blur(80px);
+  }
+
+  .project_description {
+    margin-left: 2vw;
+    font-size: 0.9vw;
+  }
+
+  .project_description > p {
+    margin-top: 0;
+  }
+
+  .competence > span {
+    margin-right: 0.4vw;
+    padding: 4px 10px 4px 10px;
+    border: solid 1px white;
+    border-radius: 15px;
+  }
