@@ -1,0 +1,100 @@
+
+
+.alert {
+    color: red;
+}
+
+.content  {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.three_sections {
+    border: solid 2px black;
+    padding: 5px;
+    margin: 5px;
+    margin-bottom: 20px;
+    min-width: 30%;
+    max-width: 40%;
+}
+
+.graph {
+    min-width: 50%;
+    min-height: 50%;
+
+}
+svg {
+    margin-bottom: 40px;
+    margin-left: 8%;
+}
+
+#ratioSvg {
+    border: solid 2px black;
+}
+
+#svgCircleGraph line {
+    stroke-width: 0.75;
+    stroke: rgb(170, 170, 170);    
+}
+
+#lineUp {
+    stroke-width: 20;
+    stroke: rgb(255, 0, 0);    
+}
+#lineDown {
+    stroke-width: 20;
+    stroke: rgb(47, 0, 255);    
+}
+
+circle {
+    fill:none;
+    stroke:rgb(170, 170, 170);
+    stroke-width:0.75
+}
+
+path {
+    fill: rgb(120, 9, 211, 0.3);
+    stroke: rgba(128, 0, 128, 0.6);
+    stroke-width: 3.5;
+}
+
+
+.baseLine{
+    stroke-width: 3;
+    stroke: rgb(0, 0, 0);
+}
+
+.nbLine{
+    stroke-width: 1;
+    stroke: rgb(160, 160, 160);
+}
+
+.even, .odd {
+    stroke-width: 62;
+}
+
+.even {
+    stroke: rgb(224, 224, 224);
+}
+
+.odd {
+    stroke: rgb(245, 245, 245);
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+a {
+    align-self: flex-end;
+}
+
+.disnone {
+    display: none;
+}

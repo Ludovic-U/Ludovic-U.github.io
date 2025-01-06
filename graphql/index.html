@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphQL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="logininputs">
+        <label for="username">Username: </label><input id="username_input" name="username" type="text">
+        <label for="password">Password: </label><input id="password_input" name="password" type="password">
+        <button id="submitBTN">Submit</button>
+        <div class="alert disnone">Email ou MDP incorrect</div>
+    </div>
+    <button id="logout" class="disnone">Log Out</button>
+
+    <div id="content" class="row content disnone">
+        <section class="three_sections">
+            <div id="name"> </div>
+            <div id="lvl"> Lvl : </div>
+            <div id="div01xp">Xp : </div>
+        </section>
+
+        <section class="three_sections">
+            <div id="ratio">Ratio : </div>
+            <svg id="ratioSvg" style="overflow: visible;" width="100px" height="40px" viewBox="0 0 100 40" class="mv6-01 pb7-01">
+                <line id="lineDown" x1="0" y1="30" y2="30" x2="100"></line>
+                <line id="lineUp" x1="0" y1="10" y2="10" x2="100"></line>                
+            </svg>
+            <div id="auditDown"></div>
+            <div id="auditUp"></div>
+        </section>
+
+        <section class="three_sections">
+            <div id="finished">Projects completed : </div>
+            <div id="working" class="col">Currently working on : </div> 
+        </section>
+
+        <section class="graph col">
+            <svg id="svgCircleGraph" style="overflow: visible;" width="100%" height="100%" viewBox="0 0 400 400" class="mv6-01 pb7-01">
+                <circle cx="200" cy="200" r="200"></circle>
+            </svg>
+
+            <svg id="svgProgressGraph" style="overflow: visible;" width="100%" height="100%" viewBox="0 0 600 400" class="mv6-01 pb7-01">
+
+            </svg>
+        </section>
+
+    </div>
+
+    
+   
+</body>
+<script type="module" src="/scripts/login.js"></script>
+</html>
